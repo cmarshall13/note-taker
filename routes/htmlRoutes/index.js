@@ -20,3 +20,15 @@ router.get('/notes', (req,res) => {
         res.status(500).statusMessage('Something went wrong!');
     }
 });
+
+//display homepage for invalid navigation
+router.get('*', (req, res) => {
+    try {
+        res.sendFile(path.join(__dirname, '../../public/index.html'));
+    }
+    catch (err) {
+        res.status(500).statusMessage('Something went wrong!');
+    }
+});
+
+module.exports = router;
