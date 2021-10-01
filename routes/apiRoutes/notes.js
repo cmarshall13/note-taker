@@ -24,3 +24,16 @@ router.post('/notes', (req, res) => {
         res.status(500).statusMessage('Something went wrong!');
     }
 });
+
+//delete a note
+router.delete('/notes/:id', (req, res) => {
+    try {
+        res.json(deleteNote(req.params.id));
+        res.status(200);
+    }
+    catch (err) {
+        res.status(500).statusMessage('Something went wrong!');
+    }
+});
+
+module.exports = router;
